@@ -25,4 +25,4 @@ taken from https://www.codewars.com/kata/559590633066759614000063/train/python
 '''
 
 def min_max(lst):
-    return [sorted(lst)[0], sorted(lst)[-1]]
+    return [min(lst), max(lst)]
