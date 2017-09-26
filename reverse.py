@@ -5,9 +5,6 @@ solution('world') # returns 'dlrow'
 '''
 
 def solution(string):
-    rev = ""
-    for char in string:
-        rev = char + rev
-    return rev
+    return ''.join(reversed(string))
 
 print(solution("hallo"))
