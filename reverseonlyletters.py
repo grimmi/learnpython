@@ -20,4 +20,4 @@ Input/Output
 def reverse_letter(string):
     return ''.join([x for x in reversed(string) if x.isalpha()])
 
-print(reverse_letter("hallo"))
+print(reverse_letter("ha333ll132_o!!"))
