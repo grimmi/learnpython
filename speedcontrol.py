@@ -22,15 +22,13 @@ With floats it can happen that results depends on the operations order. To calcu
 
 taken from https://www.codewars.com/kata/56484848ba95170a8000004d/train/python
 '''
-def gps(seconds, distances):
-    max_s = 0
-    for i in range(len(distances) - 1):
-        delta_x = distances[i + 1] - distances[i]
-        s = (3600 * delta_x) / seconds
-        if s > max_s:
-            max_s = s
+def speed(x1, x2, s):
+    return (3600 * (x2 - x1)) / s
 
-    return int(max_s)
+def gps(s, x):
+    if len(x) <= 1:
+         return 0
+    return int(max([speed(x[i], x[i+1], s) for i in range(len(x) - 1)]))
 
 
 print(gps(15,[0.0, 0.19, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25]))
