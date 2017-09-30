@@ -15,6 +15,6 @@ taken from https://www.codewars.com/kata/reverse-words
 '''
 
 def reverse_words(string):
-    return ' '.join(map(lambda w: ''.join(w[::-1]), string.split(' ')))
+    return ' '.join(w[::-1] for w in string.split(' '))
 
 print(reverse_words("hallo! welt"))
