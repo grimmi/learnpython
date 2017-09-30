@@ -17,10 +17,11 @@ taken from https://www.codewars.com/kata/530e15517bc88ac656000716/train/python
 def rotate(char):
     if not char.isalpha():
         return char
-    diff = 64 if char.istitle() else 96
+    diff = 65 if char.istitle() else 97
     return chr((((ord(char) - diff) + 13) % 26) + diff)
 
 def rot13(message):
     return ''.join(map(rotate, message))
 
-print(rot13("Az34"))
+print(rot13("abcdefghijklmnopqrstuvwxyz"))
+print(rot13("m"))
