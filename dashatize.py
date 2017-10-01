@@ -16,11 +16,6 @@ def dashatize(num):
     def dashit(ch):
         return "-" + ch + "-" if ch.isdigit() and int(ch) % 2 == 1 else ch
 
-    dashatized = ''.join(map(dashit, str(num))).replace("--", "-")
+    return ''.join(map(dashit, str(num))).replace("--", "-").strip("-")
 
-    dashatized = dashatized if not dashatized.startswith("-") else dashatized[1:]
-    dashatized = dashatized if not dashatized.endswith("-") else dashatized[:-1]
-
-    return dashatized
-
-print(dashatize(None))
+print(dashatize(-1234567))
