@@ -12,21 +12,15 @@ taken from https://www.codewars.com/kata/58223370aef9fc03fd000071/train/python
 '''
 
 def dashatize(num):
-    if num == None:
-        return "None"
 
-    dashatized = ""
-    for digit in [x for x in str(num) if x.isdigit()]:
-        if int(digit) % 2 == 0:
-            dashatized += digit
-        else:
-            if not dashatized.endswith("-") and len(dashatized) > 0:
-                dashatized += "-"
-            dashatized += digit + "-"
+    def dashit(ch):
+        return "-" + ch + "-" if ch.isdigit() and int(ch) % 2 == 1 else ch
 
-    if dashatized.endswith("-"):
-        dashatized = dashatized[:-1]
+    dashatized = ''.join(map(dashit, str(num))).replace("--", "-")
+
+    dashatized = dashatized if not dashatized.startswith("-") else dashatized[1:]
+    dashatized = dashatized if not dashatized.endswith("-") else dashatized[:-1]
 
     return dashatized
 
-print(dashatize(-1234))
+print(dashatize(None))
