@@ -40,6 +40,7 @@ def parse_html_color(color):
     if len(color) == 7:
         return dict(zip("rgb", (int(color[i:i+2], 16) for i in [1,3,5])))
     elif len(color) == 4:
-        return dict(zip("rgb", (int(color[i:i+1] * 2, 16) for i in range(1, 4))
+        return dict(zip("rgb", (int(color[i:i+1] * 2, 16) for i in range(1, 4))))
+
 
 print(parse_html_color("#fa5"))
