@@ -37,9 +37,13 @@ taken from: https://www.codewars.com/kata/5202ef17a402dd033c000009/train/python
 
 def title_case(title, minor_words):
 
-    def make_title(word):
-        return word[0].upper() + ''.join([c.lower() for c in word[1:]])
+    def make_title(word, minors):
+        if not word.lower() in minors:
+            return word[0].upper() + ''.join([c.lower() for c in word[1:]])
+        else:
+            return word.lower()
 
-    return make_title(title)
+    lower_minors = [w.lower() for w in minor_words]
+    return ' '.join([make_title(w, lower_minors) for w in title.split(' ')])
 
-print(title_case("hALLO", None))
+print(title_case("hALLO welt", ["Welt"]))
