@@ -37,17 +37,18 @@ taken from: https://www.codewars.com/kata/5202ef17a402dd033c000009/train/python
 
 def title_case(title, minor_words = None):
 
-    def make_title(word, minors, first_word = False):
-        if not word.lower() in minors or first_word:
-            return word[0].upper() + ''.join([c.lower() for c in word[1:]])
-        else:
-            return word.lower()
-
     if title is None or title == '':
         return ''
 
     lower_minors = [] if minor_words is None else [w.lower() for w in minor_words.split(' ')]
-    first_word = make_title(title.split(' ')[0], lower_minors, True)
-    return ' '.join([first_word] + [make_title(w, lower_minors) for w in title.split(' ')][1:])
+    sentence = title.split(' ')
+    title_cased = [sentence[0].capitalize()]
+    for word in sentence[1:]:
+        if word.lower() in lower_minors:
+            title_cased.append(word.lower())
+        else:
+            title_cased.append(word.capitalize())
+    
+    return ' '.join(title_cased)
 
 print(title_case("a clash of KINGS", "a an the of"))
