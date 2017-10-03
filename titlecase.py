@@ -43,7 +43,7 @@ def title_case(title, minor_words):
         else:
             return word.lower()
 
-    lower_minors = [w.lower() for w in minor_words]
+    lower_minors = [] if minor_words is None else [w.lower() for w in minor_words]
     return ' '.join([make_title(w, lower_minors) for w in title.split(' ')])
 
-print(title_case("hALLO welt", ["Welt"]))
+print(title_case("hALLO welt", None))
