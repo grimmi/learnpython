@@ -35,7 +35,7 @@ title_case('the quick brown fox') # should return: 'The Quick Brown Fox'
 taken from: https://www.codewars.com/kata/5202ef17a402dd033c000009/train/python
 '''
 
-def title_case(title, minor_words):
+def title_case(title, minor_words = None):
 
     def make_title(word, minors, first_word = False):
         if not word.lower() in minors or first_word:
@@ -43,8 +43,11 @@ def title_case(title, minor_words):
         else:
             return word.lower()
 
-    lower_minors = [] if minor_words is None else [w.lower() for w in minor_words]
+    if title is None or title == '':
+        return ''
+
+    lower_minors = [] if minor_words is None else [w.lower() for w in minor_words.split(' ')]
     first_word = make_title(title.split(' ')[0], lower_minors, True)
     return ' '.join([first_word] + [make_title(w, lower_minors) for w in title.split(' ')][1:])
 
-print(title_case("hALLO welt sOmE", ["hallo", "some"]))
+print(title_case("a clash of KINGS", "a an the of"))
