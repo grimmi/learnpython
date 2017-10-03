@@ -33,15 +33,15 @@ taken from: https://www.codewars.com/kata/58b57ae2724e3c63df000006/train/python
 PRESET_COLORS = {'limegreen' : '#ff5599'}
 
 def parse_html_color(color):
-    def make_map(red_string, green_string, blue_string):
-        return { 'r': int(red_string, 16), 'g': int(green_string, 16), 'b': int(blue_string, 16) }
 
     if not color.startswith('#'):
         color = PRESET_COLORS[color.lower()]
 
-    if(len(color) == 7):
-        return make_map(color[1] + color[2], color[3] + color[4], color[5] + color[6])
+    if len(color) == 7:
+        red, green, blue = (int(color[i:i+2], 16) for i in [1,3,5])
+        return { 'r': red, 'g': green, 'b': blue }
     elif len(color) == 4:
-        return make_map(color[1] * 2, color[2] * 2, color[3] * 2)
+        red, green, blue = (int(color[i:i+1] * 2, 16) for i in range(1, 4))
+        return { 'r': red, 'g': green, 'b': blue }
 
-print(parse_html_color("LimeGreen"))
+print(parse_html_color("#fa5"))
