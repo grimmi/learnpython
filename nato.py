@@ -29,6 +29,6 @@ NATO = {"A": "Alfa", "B": "Bravo", "C": "Charlie", "D": "Delta", "E": "Echo", "F
         "Y": "Yankee", "Z": "Zulu"}
 
 def to_nato(words):
-    return ' '.join([NATO[c.upper()] if c.isalpha() else c.strip() for c in words])
+    return ' '.join([NATO[c.upper()] if c.isalpha() else c for c in ''.join(words.split())])
 
 print(to_nato("if you can read"))
