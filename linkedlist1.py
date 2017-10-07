@@ -24,17 +24,12 @@ taken from: http://www.codewars.com/kata/linked-lists-push-and-buildonetwothree/
 '''
 
 class Node(object):
-    def __init__(self, data):
+    def __init__(self, data, next = None):
         self.data = data
-        self.next = None
+        self.next = next
 
 def push(head, data):
-    if head is None:
-        return Node(data)
-    else:
-        node = Node(data)
-        node.next = head
-        return node
+    return Node(data) if head is None else Node(data, head)
 
 def build_one_two_three():
     return push(push(push(None, 3), 2), 1)
