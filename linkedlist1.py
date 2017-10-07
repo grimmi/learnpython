@@ -37,7 +37,7 @@ def push(head, data):
         return node
 
 def build_one_two_three():
-    return push(push(push(None, 1), 2), 3)
+    return push(push(push(None, 3), 2), 1)
 
 chain = push(None, 1)
 chain = push(chain, 2)
