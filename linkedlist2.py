@@ -15,6 +15,8 @@ count(1 -> 1 -> 1 -> 2 -> 2 -> 2 -> 2 -> 3 -> 3 -> null, 2) === 4
 I've decided to bundle these two functions within the same Kata since they are both very similar.
 
 The push()/Push() and buildOneTwoThree()/BuildOneTwoThree() functions do not need to be redefined.
+
+taken from: http://www.codewars.com/kata/linked-lists-length-and-count/train/python
 '''
 
 class Node(object):
@@ -26,6 +28,8 @@ def length(node):
     return 0 if node is None else 1 + length(node.next)
 
 def count(node, data):
+    if node is None:
+        return 0
     if node.data == data:
         return 1 + count(node.next, data) if not node.next is None else 1
     else:
