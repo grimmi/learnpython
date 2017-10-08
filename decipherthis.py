@@ -16,15 +16,29 @@ decipherThis('82yade 115te 103o'); // 'Ready set go'
 taken from: https://www.codewars.com/kata/581e014b55f2c52bb00000f8/train/python
 '''
 
-def decipher_this(word):
-    ascii_code = ""
-    for c in word:
-        if not c.isdigit(): 
-            break
-        ascii_code += c
+def decipher_this(words):
+    def decipher_word(word):
+        ascii_code = ""
+        for c in word:
+            if not c.isdigit(): 
+                break
+            ascii_code += c
 
-    first_letter = chr(int(ascii_code))
+        first_letter = chr(int(ascii_code))
+        word = word.replace(ascii_code, "", 1)
+        new_word = first_letter
 
-    return first_letter
+        if len(word) == 0:
+            return new_word
+        
+        if len(word) == 1:
+            return new_word + word[-1]
+        else:
+            new_word += word[-1]
+            new_word += word[1:-1]
+            new_word += word[0]
+            return new_word
 
-print(decipher_this("82"))
+    return ' '.join(decipher_word(word) for word in words.split(' '))
+
+print(decipher_this("65 119esi 111dl 111lw 108dvei 105n 97n 111ka"))
