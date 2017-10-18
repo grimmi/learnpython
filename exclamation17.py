@@ -18,7 +18,7 @@ balance("!!???!????","??!!?!!!!!!!") == "Balance"
 def balance(left, right):
 
     def sum_side(side):
-        return sum([2 if c == '!' else 3 for c in side])
+        return side.count("!") * 2 + side.count("?") * 3
 
     left_sum = sum_side(left)
     right_sum = sum_side(right)
