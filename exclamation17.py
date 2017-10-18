@@ -23,11 +23,6 @@ def balance(left, right):
     left_sum = sum_side(left)
     right_sum = sum_side(right)
 
-    if left_sum > right_sum:
-        return "Left"
-    elif right_sum > left_sum:
-        return "Right"
-    else:
-        return "Balance"
+    return "Left" if left_sum > right_sum else "Right" if right_sum > left_sum else "Balance"
 
 print(balance("!!", "??"))
