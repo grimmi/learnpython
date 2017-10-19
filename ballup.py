@@ -28,21 +28,34 @@ The maximum height recorded by the device is not necessarily the maximum height 
 
 def max_ball(v0):
 
-    def to_kmh(ms):
-        return ms * 3.6
-
-    def to_ms(kmh):
-        return kmh / 3.6
+    tenth = 0
+    max_height = 0
+    for x in iter(int, 1):
+        tenth += 1
+        t = tenth / 10
+        step_height = ((v0 / 3.6) * t) - (0.5 * 9.81 * t * t)
+        if step_height < max_height:
+            break
+        else:
+            max_height = step_height
     
-    for t in range(0, 6):
-        s = t / 10
-        vt = to_ms(v0) * s
-        gt = 0.5 * (9.81) * s * s
-        h = vt - gt
-        print("t: " + str(t))
-        print("vt: " + str(vt))
-        print("gt: " + str(gt))
-        print("h: " + str(h))
+    return tenth - 1
 
-max_ball(15)
+    # def to_kmh(ms):
+    #     return ms * 3.6
+
+    # def to_ms(kmh):
+    #     return kmh / 3.6
+    
+    # for t in range(0, 6):
+    #     s = t / 10
+    #     vt = to_ms(v0) * s
+    #     gt = 0.5 * (9.81) * s * s
+    #     h = vt - gt
+    #     print("t: " + str(t))
+    #     print("vt: " + str(vt))
+    #     print("gt: " + str(gt))
+    #     print("h: " + str(h))
+
+print(max_ball(15))
 
