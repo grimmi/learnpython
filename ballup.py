@@ -21,41 +21,22 @@ Notes
 
 Remember to convert the velocity from km/h to m/s or from m/s in km/h when necessary.
 The maximum height recorded by the device is not necessarily the maximum height reached by the ball.
+
+taken from: https://www.codewars.com/kata/566be96bb3174e155300001b/train/python
 '''
 
-# km/h -> 1000m / 3600s -> 1/3.6 m/s
-# 10 km/h -> 10 * (1000m / 3600s) -> 10'000m/3600s -> 10/3.6 m/s
 
 def max_ball(v0):
 
-    tenth = 0
-    max_height = 0
-    for x in iter(int, 1):
-        tenth += 1
-        t = tenth / 10
-        step_height = ((v0 / 3.6) * t) - (0.5 * 9.81 * t * t)
-        if step_height < max_height:
-            break
-        else:
-            max_height = step_height
-    
-    return tenth - 1
+    t = 0
+    max_height = -1
+    current_height = 0
+    while current_height >= max_height:
+        t += .1
+        current_height = ((v0 / 3.6) * t) - (0.5 * 9.81 * t * t)
+        max_height = current_height if current_height > max_height else max_height
 
-    # def to_kmh(ms):
-    #     return ms * 3.6
-
-    # def to_ms(kmh):
-    #     return kmh / 3.6
-    
-    # for t in range(0, 6):
-    #     s = t / 10
-    #     vt = to_ms(v0) * s
-    #     gt = 0.5 * (9.81) * s * s
-    #     h = vt - gt
-    #     print("t: " + str(t))
-    #     print("vt: " + str(vt))
-    #     print("gt: " + str(gt))
-    #     print("h: " + str(h))
+    return (t * 10) - 1
 
 print(max_ball(15))
 
