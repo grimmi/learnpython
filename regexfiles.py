@@ -30,6 +30,9 @@ taken from: https://www.codewars.com/kata/574bd867d277832448000adf/train/python
 import re
 
 def is_audio(filename):
-    return True if re.match(r"^([\w]+).(mp3|flac|alac|aac)$", filename, re.IGNORECASE) else False
+    return True if re.match(r"^([\w]+).(mp3|flac|alac|aac)$", filename) else False
+
+def is_img(filename):
+    return True if re.match(r"^([\w]+).(jpg|jpeg|png|bmp|gif)$", filename) else False
 
 print(is_audio("NothingElseMatters.mp3"))
