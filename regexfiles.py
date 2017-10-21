@@ -30,8 +30,6 @@ taken from: https://www.codewars.com/kata/574bd867d277832448000adf/train/python
 import re
 
 def is_audio(filename):
-    pattern = re.compile("^([\w\d]+).(mp3|flac|alac|aac)$", re.IGNORECASE)
-    
-    return True if pattern.match(filename) else False
+    return True if re.match("^([\w\d]+).(mp3|flac|alac|aac)$", filename, re.IGNORECASE) else False
 
 print(is_audio("NothingElseMatters.mp3"))
