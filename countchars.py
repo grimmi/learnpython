@@ -9,7 +9,6 @@ taken from https://www.codewars.com/kata/52efefcbcdf57161d4000091/train/python
 
 #method with used taken from here: https://stackoverflow.com/a/37163210/1344058
 def count(word):
-    used = set()
-    return dict([(c, word.count(c)) for c in word if c not in used and (used.add(c) or True)])
+    return { c: word.count(c) for c in word}
 
 print(count("hallo"))
