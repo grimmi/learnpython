@@ -24,7 +24,7 @@ def data_reverse(data):
         for x in range(0, len(ns), size):
             yield ns[x:x + size]
 
-    chunked = list(chunks(data, 8))
-    return list(reversed(chunked))
+    chunks = list(chunks(data, 8))
+    return sum(reversed(chunks), [])
 
 print(data_reverse([1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,0]))
