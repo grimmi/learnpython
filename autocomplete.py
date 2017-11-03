@@ -24,8 +24,11 @@ For example, an input of "$%^" should be treated as "" and an input of "ab*&1cd"
 taken from: https://www.codewars.com/kata/5389864ec72ce03383000484/train/python
 '''
 
+import re
+
 def autocomplete(input_, dictionary):
-    return [word for word in dictionary if word.lower().startswith(input_.lower())][:5]
+    input_ = re.sub('[^a-zA-Z]', "", input_).lower()
+    return [word for word in dictionary if word.lower().startswith(input_)][:5]
 
 
 test_dict=[ 'abnormal',
