@@ -22,10 +22,12 @@ def likes(names):
     if nl == 0:
         return "no one likes this"
     elif nl == 1:
-        return names[0] + " likes this"
+        return "{} likes this".format(names[0])
     elif nl == 2:
-        return names[0] + " and " + names[1] + " like this"
+        return "{} and {} like this".format(*names)
     elif nl == 3:
-        return names[0] + ", " + names[1] + " and " + names[2] + " like this"
+        return "{}, {} and {} like this".format(*names)
     else:
-        return names[0] + ", " + names[1] + " and " + str(len(names) - 2) + " others like this"
+        return "{}, {} and {n} others like this".format(*names, n=nl-2)
+
+print(likes(["hans", "max", "franz", "andi"]))
