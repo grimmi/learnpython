@@ -16,3 +16,16 @@ For more than 4 names, the number in and 2 others simply increases.
 
 taken from: https://www.codewars.com/kata/5266876b8f4bf2da9b000362/train/python
 '''
+
+def likes(names):
+    nl = len(names)
+    if nl == 0:
+        return "no one likes this"
+    elif nl == 1:
+        return names[0] + " likes this"
+    elif nl == 2:
+        return names[0] + " and " + names[1] + " like this"
+    elif nl == 3:
+        return names[0] + ", " + names[1] + " and " + names[2] + " like this"
+    else:
+        return names[0] + ", " + names[1] + " and " + str(len(names) - 2) + " others like this"
