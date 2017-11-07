@@ -24,34 +24,22 @@ def power_sumDigTerm(n):
         return sum([int(c) for c in str(x)])
 
     def is_some_power_of(x, up_to):
-        if x == 1:
+        if x == 1 or up_to % x != 0:
             return False
 
-        power = 2
-        powered = pow(x, power)
+        powered = x * x
         while powered < up_to:
-            power = power + 1
-            powered = pow(x, power)
+            powered *= x
 
         return powered == up_to
 
-    def infinite():
-        i = 2
-        while 1:
-            yield i
-            i += 1
-
-
     found = 0
-    i = 2
+    i = 1
     while found < n:
-        digitsum = sum_of_digits(i)
-        if is_some_power_of(digitsum, i):
-            found += 1
-        if found == n:
-            return i
         i += 1
+        if is_some_power_of(sum_of_digits(i), i):
+            found += 1
 
-    return -1
+    return i
 
 print(power_sumDigTerm(5))
