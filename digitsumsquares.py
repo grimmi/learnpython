@@ -19,7 +19,6 @@ Happy coding!
 
 taken from: https://www.codewars.com/kata/55f4e56315a375c1ed000159/train/python
 '''
-from math import log
 
 def power_sumDigTerm(n):
 
@@ -43,8 +42,9 @@ def power_sumDigTerm(n):
     while found < n:
         i += 1
         if is_some_power_of(sum_of_digits(i), i):
+            print("found another one: %d" % i)
             found += 1
 
     return i
 
-print(power_sumDigTerm(2))
+print(power_sumDigTerm(12))
