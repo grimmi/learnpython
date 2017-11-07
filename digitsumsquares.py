@@ -23,4 +23,15 @@ def power_sumDigTerm(n):
     def sum_of_digits(x):
         return sum([int(c) for c in str(x)])
 
-    return sum_of_digits(n)
+    def is_some_power_of(x, max):
+        power = 2
+        powered = pow(x, power)
+        while(powered < max):
+            power = power + 1
+            powered = pow(x, power)
+
+        return powered == max
+
+    return is_some_power_of(9, 82)
+
+print(power_sumDigTerm(1))
