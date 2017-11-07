@@ -16,6 +16,8 @@ power_sumDigTerm(1) == 81
 power_sumDigTerm(2) == 512
 
 Happy coding!
+
+taken from: https://www.codewars.com/kata/55f4e56315a375c1ed000159/train/python
 '''
 
 def power_sumDigTerm(n):
