@@ -24,7 +24,11 @@ from math import log
 def power_sumDigTerm(n):
 
     def sum_of_digits(x):
-        return sum([int(c) for c in str(x)])
+        r = 0
+        while x:
+            r, x = r + x % 10, x // 10
+        return r
+
 
     def is_some_power_of(x, up_to):
         if x == 1 or up_to % x != 0:
@@ -35,7 +39,7 @@ def power_sumDigTerm(n):
         return up_to == 1
 
     found = 0
-    i = 50
+    i = 10
     while found < n:
         i += 1
         if is_some_power_of(sum_of_digits(i), i):
@@ -43,4 +47,4 @@ def power_sumDigTerm(n):
 
     return i
 
-print(power_sumDigTerm(8))
+print(power_sumDigTerm(2))
