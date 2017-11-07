@@ -24,6 +24,10 @@ def power_sumDigTerm(n):
         return sum([int(c) for c in str(x)])
 
     def is_some_power_of(x, max):
+        if x == 1:
+            return False
+
+        print("is %d some power of %d?" % (x, max))
         power = 2
         powered = pow(x, power)
         while(powered < max):
@@ -32,6 +36,22 @@ def power_sumDigTerm(n):
 
         return powered == max
 
-    return is_some_power_of(9, 82)
+    def infinite():
+        i = 2
+        while 1:
+            yield i
+            i += 1
+    
+    found = 0
+    for i in infinite():
+        print("checking %d..." % i)
+        digitsum = sum_of_digits(i)
+        print("digitsum: %d" % digitsum)
+        if(is_some_power_of(digitsum, i)):
+            found = found + 1
+        if found == n:
+            return i
 
-print(power_sumDigTerm(1))
+    return -1
+
+print(power_sumDigTerm(2))
