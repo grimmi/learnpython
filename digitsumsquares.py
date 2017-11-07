@@ -19,6 +19,7 @@ Happy coding!
 
 taken from: https://www.codewars.com/kata/55f4e56315a375c1ed000159/train/python
 '''
+from math import log
 
 def power_sumDigTerm(n):
 
@@ -29,14 +30,12 @@ def power_sumDigTerm(n):
         if x == 1 or up_to % x != 0:
             return False
 
-        powered = x * x
-        while powered < up_to:
-            powered *= x
-
-        return powered == up_to
+        while up_to % x == 0:
+            up_to = up_to / x
+        return up_to == 1
 
     found = 0
-    i = 1
+    i = 50
     while found < n:
         i += 1
         if is_some_power_of(sum_of_digits(i), i):
@@ -44,4 +43,4 @@ def power_sumDigTerm(n):
 
     return i
 
-print(power_sumDigTerm(5))
+print(power_sumDigTerm(8))
