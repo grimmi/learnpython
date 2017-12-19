@@ -21,7 +21,8 @@ taken from https://www.codewars.com/kata/582dcda401f9ccb4f0000025/train/python
 from math import sqrt
 
 def count_even_digits(n):
-    return sum((str(n).count(x) for x in ['0', '2', '4', '6', '8']))
+    nstr = str(n)
+    return sum((nstr.count(x) for x in ['0', '2', '4', '6', '8']))
 
 def prime_sieve(n):
     sieve = [True]*(n+1)
@@ -36,11 +37,7 @@ def prime_sieve(n):
         for z in range(x + x, n + 1, x):
             sieve[z] = False
 
-    primes = []
-    for p in range(0, n + 1):
-        if sieve[p]: primes.append(p)
-
-    return primes
+    return (x for x in range(0, n + 1) if sieve[x])
 
 def f(n):
     max_prime = 2
