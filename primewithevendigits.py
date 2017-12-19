@@ -50,4 +50,4 @@ def f(n):
             max_prime = x
     return max_prime
 
-print(str(f(10000)))
+print(str(f(487)))
