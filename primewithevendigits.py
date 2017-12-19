@@ -45,7 +45,7 @@ def prime_sieve(n):
 def f(n):
     max_prime = 2
     max_even_count = 1
-    primes = prime_sieve(n)
+    primes = prime_sieve(n - 1)
     for x in primes:
         digitcount = count_even_digits(x)
         if x > max_prime and digitcount >= max_even_count:
