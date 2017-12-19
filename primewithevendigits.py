@@ -23,18 +23,34 @@ from math import sqrt
 def count_even_digits(n):
     return sum((str(n).count(x) for x in ['0', '2', '4', '6', '8']))
 
+def prime_sieve(n):
+    sieve = [True]*(n+1)
+
+    sieve[0] = False
+    sieve[1] = False
+
+    for x in range(2, n + 1):
+        if not sieve[x]:
+            continue
+
+        for z in range(x + x, n + 1, x):
+            sieve[z] = False
+
+    primes = []
+    for p in range(0, n + 1):
+        if sieve[p]: primes.append(p)
+
+    return primes
+
 def is_prime(n):
     if n in [2, 3, 5, 7, 11, 13, 17, 19]:
         return True
     if n < 23:
         return False
-    upper_limit = int(sqrt(n))
 
-    for candidate in range(2, upper_limit):
-        if n % candidate == 0:
-            return False
+    sieve = prime_sieve(n)
 
-    return True
+    return n in sieve
 
 def f(n):
     max_prime = 2
@@ -46,5 +62,3 @@ def f(n):
                 max_even_count = digitcount
                 max_prime = x
     return max_prime
-
-print(f(10000))
